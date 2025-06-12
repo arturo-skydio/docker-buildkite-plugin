@@ -572,6 +572,9 @@ set +e
 # gracefully (or, if necessary, non-gracefully per the `--stop-timeout` flag passed above).
 trap '' SIGTERM
 
+# Prevent SIGINT from killing this script. SIGINT will still be passed to the DOcker container
+trap '' SIGINT
+
 # Don't convert paths on gitbash on windows, as that can mangle user paths and cmd options.
 # See https://github.com/buildkite-plugins/docker-buildkite-plugin/issues/81 for more information.
 # `trap` is used in this subshell for the same reason it is used above.
